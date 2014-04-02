@@ -13,6 +13,8 @@ describe Money do
 
   describe "#==" do
     it "returns true if and only if their amount and currency are equal" do
+      Money.default_bank.add_rate("EUR", "USD", 1.0)
+      
       Money.new(1_00, "USD").should == Money.new(1_00, "USD")
       Money.new(1_00, "USD").should_not == Money.new(1_00, "EUR")
       Money.new(1_00, "USD").should_not == Money.new(2_00, "USD")
